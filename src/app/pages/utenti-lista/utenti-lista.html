@@ -1,0 +1,29 @@
+<form [formGroup]="filtroForm" >
+    <input type="text" formControlName="nome">
+    <input type="text" formControlName="cognome">
+    <input type="number" formControlName="eta">
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Eta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (utente of utenti | filtroGenerico:filtriAttivi; track utente.id) {
+            <tr>
+                <td>{{utente.id}}</td>
+                <td>{{utente.nome}}</td>
+                <td>{{utente.cognome}}</td>
+                <td>{{utente.eta}}</td>
+            </tr>
+        } @empty {
+            <tr>
+                <td> Nessun utente</td>
+            </tr>
+        }
+    </tbody>
+</table>
